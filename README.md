@@ -1,46 +1,24 @@
-# Getting Started with Create React App
+# structure-example
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Пример структуры проекта
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   _config_ - папка для различных конфигурационных файлов, к примеру webpack.common.js, webpack.dev.js, webpack.prod.js
+-   _public_ - стандартная папка для хранения index.html, favicon.ico и прочих ресурсов, которые не будут собираться webpack'ом, а будут просто скопированы в конечный билд.
+-   _src_ - корневая папка приложения
+    -   _api_ - папка для хранения всех запросов к серверу. Внутри располагать папки по названию сущности, внутри которой будут лежать файл с запросами и файл с типами для этих запросов. К примеру, папка persons, внутри которой _index.ts_ для запросов и _types.ts_ для типов.
+    -   _components_ - папка для служебных компонентов, которым не нашлось места в _ui-kit_ за счет их уникальности для конкретного проекта, либо по другим причинам. Структура компонента следующая - папку компонента называем по названию компонента, внутри лежат файл компонента, файл стилей и файл для экспорта компонента. К примеру, в папке ContractButton файлы ContractButton.scss, ContractButton.tsx, index.ts. Также предлагаю класть в папку _components_ файл index.ts откуда экспортить все компоненты.
+    -   _hooks_ - папка для кастомных хуков, добавить при необходимости.
+    -   _pages_ - папка аналогичная _components_ только для компонентов страниц. Название давать с постфиксом \*Page. К примеру, LoginPage.
+    -   _types_ - папка для типов, которые используются больше 1 раза в приложении. К примеру, common.ts, date.ts.
+    -   _utils_ - папка для различных функций, которые используются больше 1 раза в приложении. К примеру, common.ts, date.ts.
+    -   _App.tsx_ - корневой компонент приложения.
+    -   _App.scss_ - стили для _App.tsx_, здесь можно нормализовать стили.
+    -   _index.tsx_ - входная точка приложения.
+-   _.dockerignore_ - файл с правилами, для исключения файлов из контекста сборки в докер-контейнере.
+-   _.eslintrc_ - файл с правилами для ESLint
+-   _.gitignore_ - файл с правилами, для определения файлов,изменения в которых не должны трекаться гитом.
+-   _.npmrc_ - файл для указания внутренних npm пакетов, например ui-kit, а также прочих настроек npm.
+-   _.prettierrc_ - файл с правилами для автоматического форматирования кода.
+-   _package.json_ - файл с зависимостями от других npm пакетов.
+-   _package-lock.json_ - создается автоматически при первой установки зависимостей, сами читайте для чего он.
+-   _tsconfig.json_ - файл с настройками для typescript
